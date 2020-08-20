@@ -1,6 +1,6 @@
 {
   "name": "le_utils",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Collection of function written during a project bloodbath",
   "main": "index.js",
   "scripts": {
