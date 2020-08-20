@@ -1,0 +1,22 @@
+{
+  "name": "le-utils",
+  "version": "1.0.0",
+  "description": "Collection of function written during a project bloodbath",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francar93/le-utils.git"
+  },
+  "keywords": [
+    "utils"
+  ],
+  "author": "FranCar & BabbaJs",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/francar93/le-utils/issues"
+  },
+  "homepage": "https://github.com/francar93/le-utils#readme"
+}
