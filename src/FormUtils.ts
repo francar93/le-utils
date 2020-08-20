@@ -1,6 +1,5 @@
 import {AbstractControl, FormArray, FormControl, FormGroup, ValidationErrors, ValidatorFn} from '@angular/forms';
 import {CommonUtils} from './CommonUtils';
-import {hasOwnProperty} from 'tslint/lib/utils';
 import * as _ from 'lodash';
 
 export const form_error_codes = {
@@ -272,7 +271,7 @@ export class FormUtils {
         const control = formGroup.get(formControlName);
 
         if (CommonUtils.isVoid(control)) {
-          console.warn(`Attenzione!: il formControl: ${formControlName} non è presente nel formGroup: ${formGroup}`);
+            console.warn(`Attenzione!: il formControl: ${formControlName} non è presente nel formGroup: ${formGroup}`);
         }
 
         if (!isValid) {
@@ -387,6 +386,8 @@ export class FormUtils {
      * @param model
      * @param form
      */
+
+    /*
     static buildForm(templateInput: Object, model: Object, form: FormGroup): FormGroup {
 
         if (CommonUtils.isVoid(form)) {
@@ -394,13 +395,14 @@ export class FormUtils {
         } else {
             const templateProperties = Object.keys(templateInput);
             templateProperties.forEach((key) => {
-                if (!hasOwnProperty(form.controls, key)) {
+                if (!FormUtils.hasOwnProperty(form.controls, key)) {
                     form.addControl(key, new FormControl((!CommonUtils.isVoid(model) && !CommonUtils.isVoid(model[templateInput[key]])) ? model[templateInput[key]] : null));
                 }
             });
         }
         return form;
     }
+    */
 
     /**
      * Sets all the input FormGroup controls to "Touched" and "Dirty"
@@ -434,7 +436,7 @@ export class FormUtils {
                 const controlErrors: ValidationErrors = form.controls[key].errors;
                 if (controlErrors != null) {
                     Object.keys(controlErrors).forEach(keyError => {
-                      console.warn(`Attenzione!: getFormValidationErrors:` + 'KEY: ' + key + ', ERROR: ' + keyError);
+                        console.warn(`Attenzione!: getFormValidationErrors:` + 'KEY: ' + key + ', ERROR: ' + keyError);
                     });
                 }
             });

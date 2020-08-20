@@ -1,13 +1,11 @@
-import {TranslateService} from '@ngx-translate/core';
-import {HttpParams} from '@angular/common/http';
 import * as _ from 'lodash';
-import * as FileSaver from 'file-saver';
 import {TCheckAndGetTypes} from "./ECommon";
 
 export class CommonUtils {
 
     static updateIdenticalProperties<T = any>(obj4update: any, obj2update: T): T {
         let updateKeys: string[] = Object.keys(obj4update);
+        // @ts-ignore
         let summaryKeys: string[] = Object.keys(obj2update);
 
         for (let k of updateKeys) {
@@ -25,14 +23,6 @@ export class CommonUtils {
             objKeys[key] = key.toString();
         });
         return objKeys;
-    }
-
-
-    static translationOptions(translate: TranslateService): void {
-        translate.addLangs(['en', 'fr', 'ur', 'es', 'it', 'fa', 'de', 'zh-CHS']);
-        translate.setDefaultLang('it');
-        const browserLang = translate.getBrowserLang();
-        translate.use(browserLang.match(/en|fr|ur|es|it|fa|de|zh-CHS/) ? browserLang : 'en');
     }
 
     static getRangeArray(end: number, start = 0, step = 1): number[] {
@@ -204,6 +194,7 @@ export class CommonUtils {
 
                 let newObj = {};
                 for (let k in obj) {
+                    // @ts-ignore
                     let newK = k.startsWith('_') ? k.substring(1) : k;
                     if (obj.hasOwnProperty(k) && !CommonUtils.isVoid(obj[k])) {
                         newObj[newK] = CommonUtils.formatOBject4Output(obj[k]);
@@ -270,15 +261,6 @@ export class CommonUtils {
             let defaultDwType = 'application/pdf';
             let pdfInBase64 = this.base64ToArrayBuffer(docObject);
             return new Blob([pdfInBase64], {type: (type) ? type : defaultDwType});
-        } catch (e) {
-            console.error(e)
-        }
-    }
-
-    static downloadFile(docObject: any, fileName: string, type: string = null): void {
-        try {
-            let blob = this.getBlob(docObject, type);
-            FileSaver.saveAs(blob, fileName);
         } catch (e) {
             console.error(e)
         }
@@ -441,8 +423,10 @@ export class CommonUtils {
         if (typeof a === 'object') {
             let index = -1;
             if (!!compareFunction) {
+                // @ts-ignore
                 index = array.findIndex((b) => compareFunction(a, b));
             } else {
+                // @ts-ignore
                 index = array.findIndex((b) => this.getObjectDiff(a, b).length === 0);
             }
             return index >= 0;
@@ -461,14 +445,6 @@ export class CommonUtils {
             list.shift();
         }
         return list;
-    }
-
-    static setHttpParams(httpParams: HttpParams, key: string, value: any) {
-        if (!CommonUtils.isVoid(value)) {
-            return httpParams.set(key, value);
-        } else {
-            return httpParams;
-        }
     }
 
     static isObjEmptyOrWithPropEmpty(obj: any): boolean {
