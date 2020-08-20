@@ -1,6 +1,6 @@
 {
   "name": "le_utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Collection of function written during a project bloodbath",
   "main": "index.js",
   "scripts": {
@@ -13,7 +13,7 @@
   "keywords": [
     "utils"
   ],
-  "author": "FranCar & BabbaJs",
+  "author": "FranCar",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/francar93/le-utils/issues"
